@@ -1,5 +1,6 @@
 const elementObject = {
   inputSection: document.querySelector('.user-input'),
+  hintSpan: document.querySelector('.hint-message'),
   list: document.querySelector('#my-todo'),
   addBtn: document.querySelector('#addBtn'),
   input: document.querySelector('#newTodo'),
@@ -36,16 +37,11 @@ const view = {
     const li = event.target.parentElement
     li.remove()
   },
-  addHintSpan () {
-    if (document.querySelectorAll('.hint-message').length < 1) {
-      const span = document.createElement('span')
-      span.classList.add(...data.hintSpanClass)
-      span.innerHTML = 'Hint: At least enter one alphabet.'
-      elementObject.inputSection.appendChild(span)
-    }
+  AddHintMessage () {
+    document.querySelector('.hint-message').innerText = 'Hint: At least enter one alphabet.'
   },
-  deleteHintSpan () {
-    if (document.querySelector('.hint-message') !== null) document.querySelector('.hint-message').remove()
+  removeHintMessage () {
+    document.querySelector('.hint-message').innerText = ''
   }
 }
 
@@ -72,11 +68,11 @@ elementObject.list.addEventListener('click', event => {
 elementObject.addBtn.addEventListener('click', event => {
   const todoString = elementObject.input.value
   if (controller.notEmptyOrSpace(todoString)) {
-    view.deleteHintSpan()
+    view.removeHintMessage()
     view.addItem(todoString)
     elementObject.input.value = ''
   } else {
-    view.addHintSpan()
+    view.AddHintMessage()
   }
 })
 
