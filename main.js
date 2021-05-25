@@ -1,5 +1,4 @@
 const elementObject = {
-  inputSection: document.querySelector('.user-input'),
   hintSpan: document.querySelector('.hint-message'),
   list: document.querySelector('#my-todo'),
   addBtn: document.querySelector('#addBtn'),
@@ -36,11 +35,8 @@ const view = {
     const li = event.target.parentElement
     li.remove()
   },
-  AddHintMessage () {
-    document.querySelector('.hint-message').innerText = 'Hint: At least enter one alphabet.'
-  },
-  removeHintMessage () {
-    document.querySelector('.hint-message').innerText = ''
+  setHintMessage (target, message) {
+    target.innerText = message
   }
 }
 
@@ -67,11 +63,11 @@ elementObject.list.addEventListener('click', event => {
 elementObject.addBtn.addEventListener('click', event => {
   const todoString = elementObject.input.value
   if (utility.notEmptyOrSpace(todoString)) {
-    view.removeHintMessage()
+    view.setHintMessage(elementObject.hintSpan, '')
     view.addItem(todoString)
     elementObject.input.value = ''
   } else {
-    view.AddHintMessage()
+    view.setHintMessage(elementObject.hintSpan, 'Hint: At least enter one alphabet.')
   }
 })
 
