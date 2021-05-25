@@ -8,8 +8,7 @@ const elementObject = {
 }
 
 const data = {
-  todos: ['Hit the gym', 'Read a book', 'Buy eggs', 'Organize office', 'Pay bills'],
-  hintSpanClass: ['mx-3', 'text-danger', 'hint-message']
+  todos: ['Hit the gym', 'Read a book', 'Buy eggs', 'Organize office', 'Pay bills']
 }
 
 const view = {
