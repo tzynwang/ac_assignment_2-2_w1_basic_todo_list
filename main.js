@@ -20,7 +20,7 @@ const view = {
       </li>
       `
   },
-  allAllTodos (todos) {
+  addAllTodo (todos) {
     todos.forEach(todo => {
       this.addItem(todo)
     })
@@ -44,13 +44,13 @@ const view = {
   }
 }
 
-const controller = {
+const utility = {
   notEmptyOrSpace (str) {
     return str.trim().length > 0
   }
 }
 
-view.allAllTodos(data.todos)
+view.addAllTodo(data.todos)
 
 elementObject.list.addEventListener('click', event => {
   const targetTagName = event.target.tagName
@@ -66,7 +66,7 @@ elementObject.list.addEventListener('click', event => {
 
 elementObject.addBtn.addEventListener('click', event => {
   const todoString = elementObject.input.value
-  if (controller.notEmptyOrSpace(todoString)) {
+  if (utility.notEmptyOrSpace(todoString)) {
     view.removeHintMessage()
     view.addItem(todoString)
     elementObject.input.value = ''
